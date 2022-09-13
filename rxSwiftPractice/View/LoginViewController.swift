@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class MainViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     @IBOutlet weak var usernameOutlet: UITextField!
     @IBOutlet weak var usernameValidOutlet: UILabel!
@@ -24,6 +24,12 @@ class MainViewController: UIViewController {
         usernameValidOutlet.text = "Username at least 5 characters"
         passwordValidOutlet.text = "Password at least 5 characters"
         bindingAll()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        usernameOutlet.text = ""
+        passwordOutlet.text = ""
     }
     
     private func bindingAll() {
@@ -43,6 +49,20 @@ class MainViewController: UIViewController {
         let everyThingValid = Observable.combineLatest(userNameOver5, passwordOver5) {$0 && $1}.share(replay: 1)
         self.bindingElement(obser: everyThingValid, binder: self.loginBtnOutlet.rx.isEnabled)
         
+        loginBtnOutlet.rx.tap.subscribe( onNext: { [weak self] in
+            self?.loginBtnPress()
+        }).disposed(by: disposeBag)
+        
+    }
+    private func loginBtnPress() {
+        let keyChain: KeyChainService = KeyChainService()
+        let account = self.usernameOutlet.text
+        let password = self.passwordOutlet.text
+        guard let account = account, let password = password else {
+            return
+        }
+        
+        keyChain.save(password, for: account)
     }
     
     private func getObservableBool(target: UITextField) -> Observable<Bool> {
@@ -54,7 +74,5 @@ class MainViewController: UIViewController {
     private func bindingElement(obser: Observable<Bool>, binder: Binder<Bool>) {
         obser.bind(to:binder).disposed(by: disposeBag)
     }
-    
-
 }
 

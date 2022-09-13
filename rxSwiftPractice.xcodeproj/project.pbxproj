@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		63BBF2D828CEC3A2003C0E8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BBF2D728CEC3A2003C0E8E /* AppDelegate.swift */; };
 		63BBF2DA28CEC3A2003C0E8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BBF2D928CEC3A2003C0E8E /* SceneDelegate.swift */; };
-		63BBF2DC28CEC3A2003C0E8E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BBF2DB28CEC3A2003C0E8E /* MainViewController.swift */; };
+		63BBF2DC28CEC3A2003C0E8E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BBF2DB28CEC3A2003C0E8E /* LoginViewController.swift */; };
 		63BBF2DF28CEC3A2003C0E8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BBF2DD28CEC3A2003C0E8E /* Main.storyboard */; };
 		63BBF2E128CEC3A6003C0E8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63BBF2E028CEC3A6003C0E8E /* Assets.xcassets */; };
 		63BBF2E428CEC3A6003C0E8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63BBF2E228CEC3A6003C0E8E /* LaunchScreen.storyboard */; };
@@ -19,6 +19,8 @@
 		63BBF31628CF0F9F003C0E8E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 63BBF31528CF0F9F003C0E8E /* RxCocoa */; };
 		63BBF31828CF0F9F003C0E8E /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 63BBF31728CF0F9F003C0E8E /* RxRelay */; };
 		63BBF31A28CF0F9F003C0E8E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 63BBF31928CF0F9F003C0E8E /* RxSwift */; };
+		63BBF32028D063B4003C0E8E /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BBF31F28D063B4003C0E8E /* KeyChainService.swift */; };
+		63BBF32228D06537003C0E8E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BBF32128D06537003C0E8E /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +44,7 @@
 		63BBF2D428CEC3A2003C0E8E /* rxSwiftPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rxSwiftPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BBF2D728CEC3A2003C0E8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63BBF2D928CEC3A2003C0E8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		63BBF2DB28CEC3A2003C0E8E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		63BBF2DB28CEC3A2003C0E8E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		63BBF2DE28CEC3A2003C0E8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		63BBF2E028CEC3A6003C0E8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63BBF2E328CEC3A6003C0E8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -52,6 +54,8 @@
 		63BBF2F428CEC3A6003C0E8E /* rxSwiftPracticeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rxSwiftPracticeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BBF2F828CEC3A6003C0E8E /* rxSwiftPracticeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rxSwiftPracticeUITests.swift; sourceTree = "<group>"; };
 		63BBF2FA28CEC3A6003C0E8E /* rxSwiftPracticeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rxSwiftPracticeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		63BBF31F28D063B4003C0E8E /* KeyChainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
+		63BBF32128D06537003C0E8E /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,9 +110,10 @@
 		63BBF2D628CEC3A2003C0E8E /* rxSwiftPractice */ = {
 			isa = PBXGroup;
 			children = (
+				63BBF31E28D06388003C0E8E /* Service */,
+				63BBF31D28D03228003C0E8E /* View */,
 				63BBF2D728CEC3A2003C0E8E /* AppDelegate.swift */,
 				63BBF2D928CEC3A2003C0E8E /* SceneDelegate.swift */,
-				63BBF2DB28CEC3A2003C0E8E /* MainViewController.swift */,
 				63BBF2DD28CEC3A2003C0E8E /* Main.storyboard */,
 				63BBF2E028CEC3A6003C0E8E /* Assets.xcassets */,
 				63BBF2E228CEC3A6003C0E8E /* LaunchScreen.storyboard */,
@@ -139,6 +144,23 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		63BBF31D28D03228003C0E8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				63BBF2DB28CEC3A2003C0E8E /* LoginViewController.swift */,
+				63BBF32128D06537003C0E8E /* SecondViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		63BBF31E28D06388003C0E8E /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				63BBF31F28D063B4003C0E8E /* KeyChainService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,8 +302,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63BBF2DC28CEC3A2003C0E8E /* MainViewController.swift in Sources */,
+				63BBF2DC28CEC3A2003C0E8E /* LoginViewController.swift in Sources */,
+				63BBF32028D063B4003C0E8E /* KeyChainService.swift in Sources */,
 				63BBF2D828CEC3A2003C0E8E /* AppDelegate.swift in Sources */,
+				63BBF32228D06537003C0E8E /* SecondViewController.swift in Sources */,
 				63BBF2DA28CEC3A2003C0E8E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
