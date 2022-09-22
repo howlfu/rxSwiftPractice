@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordOutlet: UITextField!
     @IBOutlet weak var passwordValidOutlet: UILabel!
     @IBOutlet weak var loginBtnOutlet: UIButton!
-    var disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
