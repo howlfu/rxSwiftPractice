@@ -30,9 +30,10 @@ class SecondViewModel {
             desc.onNext(data.weather.desc)
         }, onError: { [self] error in
             temperate.onError(error)
-            rainRate.onError(error)
         }, onCompleted: {
             print("取得 json 任务成功完成")
+        }, onDisposed: {
+            print("disposed")
         })
     }
     

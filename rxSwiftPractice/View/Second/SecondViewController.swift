@@ -48,7 +48,7 @@ class SecondViewController: UIViewController {
                 }
         }, onError: { [weak self] error in
             DispatchQueue.main.async {
-                self?.showAlert()
+                self?.showAlert(title: "錯誤", msg:  "網路異常")
             }
         }).disposed(by: disposeBag)
         //binder for bind in MainScheduler
@@ -96,8 +96,8 @@ class SecondViewController: UIViewController {
     
     
     
-    private func showAlert() {
-        let controller = UIAlertController(title: "錯誤", message: "網路異常", preferredStyle: .alert)
+    private func showAlert(title: String, msg: String) {
+        let controller = UIAlertController(title: title, message: msg , preferredStyle: .alert)
            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
            controller.addAction(okAction)
            present(controller, animated: true, completion: nil)
