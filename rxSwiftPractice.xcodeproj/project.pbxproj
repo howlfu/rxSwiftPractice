@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		631C9E8028E15A6A00942A54 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631C9E7F28E15A6A00942A54 /* UserDefaultService.swift */; };
 		6397A5B628DAF4CA00104284 /* UrlRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6397A5B528DAF4CA00104284 /* UrlRequestService.swift */; };
 		6397A5BA28DAF53C00104284 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6397A5B928DAF53C00104284 /* WeatherModel.swift */; };
 		6397A5BD28DAF66800104284 /* UrlRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6397A5BC28DAF66800104284 /* UrlRequest.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		631C9E7F28E15A6A00942A54 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
 		6397A5B528DAF4CA00104284 /* UrlRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlRequestService.swift; sourceTree = "<group>"; };
 		6397A5B928DAF53C00104284 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		6397A5BC28DAF66800104284 /* UrlRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlRequest.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			children = (
 				63BBF31F28D063B4003C0E8E /* KeyChainService.swift */,
 				6397A5B528DAF4CA00104284 /* UrlRequestService.swift */,
+				631C9E7F28E15A6A00942A54 /* UserDefaultService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63BBF2DC28CEC3A2003C0E8E /* LoginViewController.swift in Sources */,
+				631C9E8028E15A6A00942A54 /* UserDefaultService.swift in Sources */,
 				63E9E6CC28DD8C5C00A3DE9E /* SecondModel.swift in Sources */,
 				6397A5B628DAF4CA00104284 /* UrlRequestService.swift in Sources */,
 				63BBF32028D063B4003C0E8E /* KeyChainService.swift in Sources */,

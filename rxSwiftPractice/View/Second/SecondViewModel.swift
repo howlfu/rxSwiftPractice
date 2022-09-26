@@ -12,14 +12,15 @@ class SecondViewModel {
     let rainRate : PublishSubject<Int> = PublishSubject()
     let humiRate : PublishSubject<Int> = PublishSubject()
     let desc: PublishSubject<String> = PublishSubject()
+    let logout: PublishSubject<Bool> = PublishSubject()
     let disposeBag = DisposeBag()
     init() {
         
     }
     
-    func getWeather() {
+    func getWeather(county:String, town: String) {
         let urlReq = UrlRequestService()
-        guard let weatherObserver = urlReq.WeatherGetRet() else {
+        guard let weatherObserver = urlReq.WeatherGetRet(county: county, town: town) else {
             return
         }
         weatherObserver.subscribe(onNext: { [self] data in
@@ -33,5 +34,10 @@ class SecondViewModel {
         }, onCompleted: {
             print("取得 json 任务成功完成")
         })
+    }
+    
+    func logoutAct() {
+        UserService.shared.clear()
+        logout.onNext(true)
     }
 }

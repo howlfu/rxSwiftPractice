@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 
 class SecondViewController: UIViewController {
+    @IBOutlet weak var logoutBtn: UIButton!
     @IBOutlet weak var county: UITextField!
     @IBOutlet weak var dist: UITextField!
     @IBOutlet weak var tmpLabel: UILabel!
@@ -22,11 +23,24 @@ class SecondViewController: UIViewController {
     let viewModel = SecondViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        initView()
         bindingAll()
+    }
+    
+    private func initView() {
+        self.county.placeholder = "新北市"
+        self.dist.placeholder = "樹林區"
     }
     
     private func bindingAll() {
         // subscribe
+        let countyObser = self.county.rx.text.orEmpty.map{
+            $0.count > 0 } .share(replay: 1)
+        let cityObser = self.dist.rx.text.orEmpty.map{
+            $0.count > 0 } .share(replay: 1)
+        let getBtnType = Observable.combineLatest(countyObser, cityObser){$0 || $1}.share(replay: 1)
+        getBtnType.bind(to: self.getBtn.rx.isEnabled).disposed(by: disposeBag)
+        
         viewModel.temperate.subscribe(
             onNext: { [weak self] (data) in
                 DispatchQueue.main.async {
@@ -58,14 +72,29 @@ class SecondViewController: UIViewController {
             }
         }.disposed(by: disposeBag)
         
+        viewModel.logout.bind(onNext: {[weak self] (isLogout) in
+            if isLogout {
+                self?.navigationController?.popViewController(animated: false)
+            }
+        }).disposed(by: disposeBag)
         //operator
         getBtn.rx.tap.subscribe(onNext:  { [weak self] in
             DispatchQueue.main.async {
-                self?.viewModel.getWeather()
+                let county = self?.county.text ?? "新北市"
+                let town = self?.dist.text ?? "樹林區"
+                if county == "" || town == "" {
+                    return
+                }
+                self?.viewModel.getWeather(county: county, town: town)
             }
         }).disposed(by: disposeBag)
         
+        let logoutBtnObs = logoutBtn.rx.tap.subscribe(onNext:  { [weak self] in
+            self?.viewModel.logoutAct()
+        })
     }
+    
+    
     
     private func showAlert() {
         let controller = UIAlertController(title: "錯誤", message: "網路異常", preferredStyle: .alert)

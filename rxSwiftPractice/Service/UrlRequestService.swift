@@ -9,12 +9,12 @@ import Foundation
 import RxSwift
 
 class UrlRequestService: NSObject, URLSessionDelegate{
-    func WeatherGetRet() -> Observable<WeatherModel>?{
+    func WeatherGetRet(county: String, town: String) -> Observable<WeatherModel>?{
         let urlStr = UrlRequest.weather
         let paras = [
 //            "code": "7601921"
-            "county": "新北市",
-            "town": "樹林區"
+            "county": county,
+            "town": town
         ]
         let getData: Observable<WeatherModel> = baseGetPattern(url: urlStr, paras: paras)
         return getData

@@ -21,9 +21,14 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        usernameValidOutlet.text = "Username at least 5 characters"
-        passwordValidOutlet.text = "Password at least 5 characters"
-        bindingAll()
+        if UserService.shared.accessToken == "token123" {
+           toNextView()
+        } else {
+            usernameValidOutlet.text = "Username at least 5 characters"
+            passwordValidOutlet.text = "Password at least 5 characters"
+            bindingAll()
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -63,6 +68,12 @@ class LoginViewController: UIViewController {
         }
         
         keyChain.save(password, for: account)
+        UserService.shared.accessToken = "token123"
+        self.toNextView()
+    }
+    
+    private func toNextView() {
+        performSegue(withIdentifier: "toSecondView", sender: self)
     }
     
     private func getObservableBool(target: UITextField) -> Observable<Bool> {
