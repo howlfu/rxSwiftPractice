@@ -38,7 +38,7 @@ class SecondViewController: UIViewController {
             $0.count > 0 } .share(replay: 1)
         let cityObser = self.dist.rx.text.orEmpty.map{
             $0.count > 0 } .share(replay: 1)
-        let getBtnType = Observable.combineLatest(countyObser, cityObser){$0 || $1}.share(replay: 1)
+        let getBtnType = Observable.combineLatest(countyObser, cityObser){$0 && $1}.share(replay: 1)
         getBtnType.bind(to: self.getBtn.rx.isEnabled).disposed(by: disposeBag)
         
         viewModel.temperate.subscribe(

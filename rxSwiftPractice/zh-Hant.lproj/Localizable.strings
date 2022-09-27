@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  rxSwiftPractice
+
+  Created by Howlfu on 2022/9/26.
+  
+*/
+"Login.Warn.Account" = "帳號至少五個字";
+"Login.Warn.Password" = "密碼至少五個字";
+"Alert.Network.Error.Title" = "錯誤";
+"Alert.Network.Error.Desc" = "參數或網路錯誤";
+"Default.County" = "新北市";
+"Default.Town" = "樹林區";

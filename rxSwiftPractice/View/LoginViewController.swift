@@ -20,21 +20,26 @@ class LoginViewController: UIViewController {
     let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        if UserService.shared.accessToken == "token123" {
-           toNextView()
-        } else {
-            usernameValidOutlet.text = "Username at least 5 characters"
-            passwordValidOutlet.text = "Password at least 5 characters"
-            bindingAll()
-        }
-        
+        initView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         usernameOutlet.text = ""
         passwordOutlet.text = ""
+        initView()
+    }
+    
+    private func initView() {
+        if UserService.shared.accessToken == "token123" {
+           toNextView()
+        } else {
+            let accountWarn = NSLocalizedString("Login.Warn.Account", comment: "Login Warning Message Account")
+            let passwordWarn = NSLocalizedString("Login.Warn.Password", comment: "Login Warning Message Password")
+            usernameValidOutlet.text = accountWarn
+            passwordValidOutlet.text = passwordWarn
+            bindingAll()
+        }
     }
     
     private func bindingAll() {
@@ -73,7 +78,8 @@ class LoginViewController: UIViewController {
     }
     
     private func toNextView() {
-        performSegue(withIdentifier: "toSecondView", sender: self)
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "secondView") as? SecondViewController
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     private func getObservableBool(target: UITextField) -> Observable<Bool> {

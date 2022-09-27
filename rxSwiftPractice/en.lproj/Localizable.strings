@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  rxSwiftPractice
+
+  Created by Howlfu on 2022/9/26.
+  
+*/
+
+"Login.Warn.Account" = "Account at least 5 characters";
+"Login.Warn.Password" = "Password at least 5 characters";
+"Alert.Network.Error.Title" = "Error";
+"Alert.Network.Error.Desc" = "Parameter Error or Network Fail";
+"Default.County" = "NewTaipeiCity";
+"Default.Town" = "ShulinDist";

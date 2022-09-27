@@ -1,0 +1,69 @@
+
+/* Class = "UILabel"; text = "30"; ObjectID = "5bU-VU-egR"; */
+"5bU-VU-egR.text" = "30";
+
+/* Class = "UILabel"; text = "濕度"; ObjectID = "5wA-Jj-fp1"; */
+"5wA-Jj-fp1.text" = "湿度";
+
+/* Class = "UILabel"; text = "區："; ObjectID = "6SM-7f-btF"; */
+"6SM-7f-btF.text" = "区：";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "7Pk-fJ-mea"; */
+"7Pk-fJ-mea.text" = "Password";
+
+/* Class = "UILabel"; text = "縣市："; ObjectID = "Blc-P0-EVx"; */
+"Blc-P0-EVx.text" = "县市：";
+
+/* Class = "UILabel"; text = "30"; ObjectID = "CF8-kL-hg3"; */
+"CF8-kL-hg3.text" = "30";
+
+/* Class = "UIButton"; configuration.title = "Login"; ObjectID = "CYf-90-u96"; */
+"CYf-90-u96.configuration.title" = "登入";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "CYf-90-u96"; */
+"CYf-90-u96.normalTitle" = "按钮";
+
+/* Class = "UILabel"; text = "30"; ObjectID = "M8E-fC-ykZ"; */
+"M8E-fC-ykZ.text" = "30";
+
+/* Class = "UILabel"; text = "30"; ObjectID = "S79-7b-0uT"; */
+"S79-7b-0uT.text" = "30";
+
+/* Class = "UILabel"; text = "概況"; ObjectID = "ZlP-wd-O50"; */
+"ZlP-wd-O50.text" = "概况";
+
+/* Class = "UILabel"; text = "氣溫"; ObjectID = "fPz-iJ-rkD"; */
+"fPz-iJ-rkD.text" = "气温";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "jAT-XK-6Ml"; */
+"jAT-XK-6Ml.text" = "密码";
+
+/* Class = "UILabel"; text = "PM2.5"; ObjectID = "kan-jI-bkx"; */
+"kan-jI-bkx.text" = "PM2.5";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "kfr-nc-lHS"; */
+"kfr-nc-lHS.text" = "密码";
+
+/* Class = "UILabel"; text = "天氣概況"; ObjectID = "m0o-Pi-30d"; */
+"m0o-Pi-30d.text" = "天气概况";
+
+/* Class = "UILabel"; text = "降雨"; ObjectID = "myX-cG-2bO"; */
+"myX-cG-2bO.text" = "降雨";
+
+/* Class = "UIButton"; configuration.title = "取得"; ObjectID = "q0J-Xg-6wm"; */
+"q0J-Xg-6wm.configuration.title" = "取得";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "q0J-Xg-6wm"; */
+"q0J-Xg-6wm.normalTitle" = "按钮";
+
+/* Class = "UILabel"; text = "30"; ObjectID = "qBE-3q-7gG"; */
+"qBE-3q-7gG.text" = "30";
+
+/* Class = "UILabel"; text = "User Name"; ObjectID = "xeq-nB-qoP"; */
+"xeq-nB-qoP.text" = "帐户";
+
+/* Class = "UIButton"; configuration.title = "Logout"; ObjectID = "zDl-bM-sMP"; */
+"zDl-bM-sMP.configuration.title" = "登出";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "zDl-bM-sMP"; */
+"zDl-bM-sMP.normalTitle" = "按钮";
