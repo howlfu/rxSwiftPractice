@@ -27,19 +27,18 @@ class LoginViewController: UIViewController {
         super.viewDidAppear(animated)
         usernameOutlet.text = ""
         passwordOutlet.text = ""
-        initView()
+        if UserService.shared.accessToken == "token123" {
+           toNextView()
+        }
+//        initView()
     }
     
     private func initView() {
-        if UserService.shared.accessToken == "token123" {
-           toNextView()
-        } else {
-            let accountWarn = NSLocalizedString("Login.Warn.Account", comment: "Login Warning Message Account")
-            let passwordWarn = NSLocalizedString("Login.Warn.Password", comment: "Login Warning Message Password")
-            usernameValidOutlet.text = accountWarn
-            passwordValidOutlet.text = passwordWarn
-            bindingAll()
-        }
+        let accountWarn = NSLocalizedString("Login.Warn.Account", comment: "Login Warning Message Account")
+        let passwordWarn = NSLocalizedString("Login.Warn.Password", comment: "Login Warning Message Password")
+        usernameValidOutlet.text = accountWarn
+        passwordValidOutlet.text = passwordWarn
+        bindingAll()
     }
     
     private func bindingAll() {
@@ -59,12 +58,13 @@ class LoginViewController: UIViewController {
         let everyThingValid = Observable.combineLatest(userNameOver5, passwordOver5) {$0 && $1}.share(replay: 1)
         self.bindingElement(obser: everyThingValid, binder: self.loginBtnOutlet.rx.isEnabled)
         
+//        loginBtnOutlet.addTarget(self, action: #selector(loginBtnPress), for: .touchUpInside)
         loginBtnOutlet.rx.tap.subscribe( onNext: { [weak self] in
             self?.loginBtnPress()
         }).disposed(by: disposeBag)
         
     }
-    private func loginBtnPress() {
+    @objc private func loginBtnPress() {
         let keyChain: KeyChainService = KeyChainService()
         let account = self.usernameOutlet.text
         let password = self.passwordOutlet.text
