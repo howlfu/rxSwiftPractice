@@ -20,9 +20,15 @@ class SecondViewModel {
     
     func getWeather(county:String, town: String) {
         let urlReq = UrlRequestService()
-        guard let weatherObserver = urlReq.WeatherGetRet(county: county, town: town) else {
+        var countyData = county, townData = town
+        if countyData == "" || townData == "" {
+            countyData = "新北市"
+            townData = "樹林區"
+        }
+        guard let weatherObserver = urlReq.WeatherGetRet(county: countyData, town: townData) else {
             return
         }
+        
         weatherObserver.subscribe(onNext: { [self] data in
             temperate.onNext(data.weather.temperature)
             rainRate.onNext(data.weather.rain_chance)

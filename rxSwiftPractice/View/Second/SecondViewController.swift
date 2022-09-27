@@ -77,11 +77,8 @@ class SecondViewController: UIViewController {
         }).disposed(by: disposeBag)
         //operator
         getBtn.rx.tap.subscribe(onNext:  { [weak self] in
-            let county = self?.county.text ?? "新北市"
-            let town = self?.dist.text ?? "樹林區"
-            if county == "" || town == "" {
-                return
-            }
+            var county = self?.county.text ?? "新北市"
+            var town = self?.dist.text ?? "樹林區"
             self?.viewModel.getWeather(county: county, town: town)
         }).disposed(by: disposeBag)
         
