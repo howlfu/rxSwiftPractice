@@ -59,7 +59,9 @@ class LoginViewController: UIViewController {
         self.bindingElement(obser: everyThingValid, binder: self.loginBtnOutlet.rx.isEnabled)
         
 //        loginBtnOutlet.addTarget(self, action: #selector(loginBtnPress), for: .touchUpInside)
-        loginBtnOutlet.rx.tap.subscribe( onNext: { [weak self] in
+        loginBtnOutlet.rx.tap
+            .observe(on: MainScheduler.instance)
+            .subscribe( onNext: { [weak self] in
             self?.loginBtnPress()
         }).disposed(by: disposeBag)
         

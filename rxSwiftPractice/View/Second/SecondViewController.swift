@@ -41,15 +41,13 @@ class SecondViewController: UIViewController {
         let getBtnType = Observable.combineLatest(countyObser, cityObser){$0 && $1}.share(replay: 1)
         getBtnType.bind(to: self.getBtn.rx.isEnabled).disposed(by: disposeBag)
         
-        viewModel.temperate.subscribe(
+        viewModel.temperate
+            .observe(on: MainScheduler.instance)
+            .subscribe(
             onNext: { [weak self] (data) in
-                DispatchQueue.main.async {
-                    self?.tmpLabel.text = String(data) + "°C"
-                }
+                self?.tmpLabel.text = String(data) + "°C"
         }, onError: { [weak self] error in
-            DispatchQueue.main.async {
-                self?.showAlert(title: "錯誤", msg:  "網路異常")
-            }
+            self?.showAlert(title: "錯誤", msg:  "網路異常")
         }).disposed(by: disposeBag)
         //binder for bind in MainScheduler
         let rainObserver: Binder<Int> = Binder(viewModel.rainRate) { [weak self] (control, data) in
@@ -60,16 +58,16 @@ class SecondViewController: UIViewController {
             .disposed(by: disposeBag)
         
         //bind to observerable directly
-        viewModel.humiRate.bind { [weak self] (data) in
-            DispatchQueue.main.async {
+        viewModel.humiRate
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] (data) in
                 self?.humiRate.text = String(data) + "%"
-            }
         }.disposed(by: disposeBag)
         
-        viewModel.desc.bind { [weak self] (data) in
-            DispatchQueue.main.async {
+        viewModel.desc
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] (data) in
                 self?.descLabel.text = data
-            }
         }.disposed(by: disposeBag)
         
         viewModel.logout.bind(onNext: {[weak self] (isLogout) in
@@ -79,14 +77,12 @@ class SecondViewController: UIViewController {
         }).disposed(by: disposeBag)
         //operator
         getBtn.rx.tap.subscribe(onNext:  { [weak self] in
-            DispatchQueue.main.async {
-                let county = self?.county.text ?? "新北市"
-                let town = self?.dist.text ?? "樹林區"
-                if county == "" || town == "" {
-                    return
-                }
-                self?.viewModel.getWeather(county: county, town: town)
+            let county = self?.county.text ?? "新北市"
+            let town = self?.dist.text ?? "樹林區"
+            if county == "" || town == "" {
+                return
             }
+            self?.viewModel.getWeather(county: county, town: town)
         }).disposed(by: disposeBag)
         
         let logoutBtnObs = logoutBtn.rx.tap.subscribe(onNext:  { [weak self] in
