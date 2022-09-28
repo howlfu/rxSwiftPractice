@@ -20,7 +20,7 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var pmLabel: UILabel!
     let disposeBag = DisposeBag()
-    let viewModel = SecondViewModel()
+    var viewModel: SecondViewModel!
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
@@ -72,13 +72,13 @@ class SecondViewController: UIViewController {
         
         viewModel.logout.bind(onNext: {[weak self] (isLogout) in
             if isLogout {
-                self?.navigationController?.popViewController(animated: false)
+                self?.viewModel.backToLogin()
             }
         }).disposed(by: disposeBag)
         //operator
         getBtn.rx.tap.subscribe(onNext:  { [weak self] in
-            var county = self?.county.text ?? "新北市"
-            var town = self?.dist.text ?? "樹林區"
+            let county = self?.county.text ?? "新北市"
+            let town = self?.dist.text ?? "樹林區"
             self?.viewModel.getWeather(county: county, town: town)
         }).disposed(by: disposeBag)
         

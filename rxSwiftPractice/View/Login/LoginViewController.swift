@@ -17,6 +17,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordOutlet: UITextField!
     @IBOutlet weak var passwordValidOutlet: UILabel!
     @IBOutlet weak var loginBtnOutlet: UIButton!
+    var viewModel: LoginViewModel!
+    
+    static func instantiate() -> LoginViewController {
+        let storyBoard = UIStoryboard(name: "Main", bundle: .main)
+        let viewController = storyBoard.instantiateInitialViewController() as! LoginViewController
+         return viewController
+    }
+    
     let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +43,11 @@ class LoginViewController: UIViewController {
     
     private func initView() {
         let accountWarn = NSLocalizedString("Login.Warn.Account", comment: "Login Warning Message Account")
-        let passwordWarn = NSLocalizedString("Login.Warn.Password", comment: "Login Warning Message Password")
+        let passwordWarn = NSLocalizedString("Login.Warn.Password", comment: "Login Warning Message Password")  
+//        let path = Bundle.main.path(forResource: "zh-Hans", ofType: "lproj")
+//        let bundle = Bundle(path: path!)
+//        let str = NSLocalizedString("Login.Warn.Account" , tableName: nil, bundle: bundle!, value: "", comment: "")
+
         usernameValidOutlet.text = accountWarn
         passwordValidOutlet.text = passwordWarn
         bindingAll()
@@ -67,21 +79,15 @@ class LoginViewController: UIViewController {
         
     }
     @objc private func loginBtnPress() {
-        let keyChain: KeyChainService = KeyChainService()
         let account = self.usernameOutlet.text
         let password = self.passwordOutlet.text
-        guard let account = account, let password = password else {
-            return
-        }
-        
-        keyChain.save(password, for: account)
+        self.viewModel.keyChainSave(acc: account, pw: password)
         UserService.shared.accessToken = "token123"
         self.toNextView()
     }
     
     private func toNextView() {
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "secondView") as? SecondViewController
-        self.navigationController?.pushViewController(vc!, animated: true)
+        viewModel.toSecView()
     }
     
     private func getObservableBool(target: UITextField) -> Observable<Bool> {

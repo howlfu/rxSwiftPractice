@@ -14,8 +14,14 @@ class SecondViewModel {
     let desc: PublishSubject<String> = PublishSubject()
     let logout: PublishSubject<Bool> = PublishSubject()
     let disposeBag = DisposeBag()
-    init() {
-        
+    let coordinator: MainCoordinator!
+    
+    init(coor: MainCoordinator) {
+        coordinator = coor
+    }
+    
+    func backToLogin() {
+        self.coordinator.backToLogin()
     }
     
     func getWeather(county:String, town: String) {
