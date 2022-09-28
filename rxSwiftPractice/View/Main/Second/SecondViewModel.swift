@@ -53,4 +53,8 @@ class SecondViewModel {
         UserService.shared.clear()
         logout.onNext(true)
     }
+    
+    func toImageFlow() {
+        coordinator.secToImageFlow()
+    }
 }

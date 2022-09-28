@@ -14,7 +14,7 @@ class LoginViewModel {
     }
     
     func toSecView() {
-        coordinator.loginToSecView()
+        coordinator.toSecView()
     }
     
     func keyChainSave(acc: String?, pw: String?) {

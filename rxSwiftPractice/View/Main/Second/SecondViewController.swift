@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 
 class SecondViewController: UIViewController {
+    @IBOutlet weak var imageBtn: UIButton!
     @IBOutlet weak var logoutBtn: UIButton!
     @IBOutlet weak var county: UITextField!
     @IBOutlet weak var dist: UITextField!
@@ -18,7 +19,6 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var humiRate: UILabel!
     @IBOutlet weak var rainRate: UILabel!
     @IBOutlet weak var descLabel: UILabel!
-    @IBOutlet weak var pmLabel: UILabel!
     let disposeBag = DisposeBag()
     var viewModel: SecondViewModel!
     override func viewDidLoad() {
@@ -82,8 +82,12 @@ class SecondViewController: UIViewController {
             self?.viewModel.getWeather(county: county, town: town)
         }).disposed(by: disposeBag)
         
-        let logoutBtnObs = logoutBtn.rx.tap.subscribe(onNext:  { [weak self] in
+        logoutBtn.rx.tap.subscribe(onNext:  { [weak self] in
             self?.viewModel.logoutAct()
+        })
+        
+        imageBtn.rx.tap.subscribe(onNext:  { [weak self] in
+            self?.viewModel.toImageFlow()
         })
     }
     

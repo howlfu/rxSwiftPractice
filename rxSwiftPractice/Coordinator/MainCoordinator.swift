@@ -26,11 +26,18 @@ class MainCoordinator: Coordinator {
         let startView = LoginViewController.instantiate()
         startView.viewModel = LoginViewModel.init(coor: self)
         navigationController = UINavigationController(rootViewController: startView)
+        navigationController?.isNavigationBarHidden = true
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
     
-    func loginToSecView() {
+    func childDidFinished(child: Coordinator) {
+//        if children.contains(where: child) {
+//            
+//        }
+    }
+    
+    func toSecView() {
         let secViewVC = storyboard.instantiateViewController(withIdentifier: "secondView") as! SecondViewController
         let viewModel = SecondViewModel(coor: self)
         secViewVC.viewModel = viewModel
@@ -39,6 +46,17 @@ class MainCoordinator: Coordinator {
     
     func backToLogin() {
         self.navigationController?.popViewController(animated: false)
+    }
+    
+    func secToImageFlow() {
+        guard let navMain = self.navigationController else {
+            print("Main nav is gone")
+            return
+        }
+        let imageCoordinator = ImageCoordinator(nav: navMain)
+        children.append(imageCoordinator)
+        imageCoordinator.parentCoordinator = self
+        imageCoordinator.start()
     }
     
 }
